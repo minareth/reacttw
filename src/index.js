@@ -11,8 +11,7 @@ root.render(
     domain={process.env.REACT_APP_AUTH0_DOMAIN}
     clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
     authorizationParams={{
-      redirect_uri: window.location.origin,
-      // audience: "https://dev-33viy37t7lo5mzvo.us.auth0.com/api/v2/"
+      redirect_uri: "https://minareth.github.io/reacttw",
     }}
   >
     <App />
