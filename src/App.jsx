@@ -11,7 +11,7 @@ function App() {
   const logoutWithRedirect = () =>
       logout({
         logoutParams: {
-          returnTo: "https://minareth.github.io/reacttw",
+          returnTo: process.env.REACT_APP_AUTH0_CALLBACK_URL,
         }
       });
 
