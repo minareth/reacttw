@@ -18,13 +18,14 @@ function App() {
   if (error) {
     return <div>
       <p>Oops... {error.message}</p>
+      <Button label={'user'} triggeredFunction={() => console.log('user', user)} />
     </div>;
   }
 
   if (isLoading) {
     return <Loading />;
   }
-
+  console.log('User', user, isAuthenticated);
   if(!isAuthenticated && !user?.email && !isLoading) {
     return <LoginButton />;
   }
