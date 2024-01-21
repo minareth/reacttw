@@ -11,7 +11,7 @@ function App() {
   const logoutWithRedirect = () =>
       logout({
         logoutParams: {
-          returnTo: process.env.REACT_APP_AUTH0_CALLBACK_URL,
+          returnTo: isLocal() ? process.env.REACT_APP_AUTH0_CALLBACK_DEV_URL : process.env.REACT_APP_AUTH0_CALLBACK_PROD_URL,
         }
       });
 

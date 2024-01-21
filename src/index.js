@@ -4,15 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from "@auth0/auth0-react";
+import { isLocal } from './lib/utils';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log('index', process.env.REACT_APP_AUTH0_CALLBACK_URL);
+
+console.log('index', process.env.REACT_APP_AUTH0_CALLBACK_URL, window.location.href, isLocal());
+
 root.render(
   <Auth0Provider
     domain={process.env.REACT_APP_AUTH0_DOMAIN}
     clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
     authorizationParams={{
-      redirect_uri: process.env.REACT_APP_AUTH0_CALLBACK_URL,
+      redirect_uri: isLocal() ? process.env.REACT_APP_AUTH0_CALLBACK_DEV_URL : process.env.REACT_APP_AUTH0_CALLBACK_PROD_URL,
     }}
   >
     <App />
