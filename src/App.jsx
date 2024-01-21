@@ -7,7 +7,7 @@ import {Button} from "./components/button";
 
 function App() {
   const { user, isAuthenticated, isLoading, error, logout } = useAuth0();
-  // console.log('isLoading', isLoading, isAuthenticated);
+  console.log('isLoading', isLoading, isAuthenticated);
   const logoutWithRedirect = () =>
       logout({
         logoutParams: {
