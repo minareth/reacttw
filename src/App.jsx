@@ -3,7 +3,8 @@ import './App.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from './components/login-button';
 import { Loading } from "./components/loading";
-import {Button} from "./components/button";
+import { Button } from "./components/button";
+import { isLocal } from './lib/utils.ts';
 
 function App() {
   const { user, isAuthenticated, isLoading, error, logout } = useAuth0();
