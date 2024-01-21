@@ -11,7 +11,7 @@ function App() {
   const logoutWithRedirect = () =>
       logout({
         logoutParams: {
-          returnTo: window.location.origin,
+          returnTo: "https://minareth.github.io/reacttw",
         }
       });
 
