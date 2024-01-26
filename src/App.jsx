@@ -5,10 +5,11 @@ import { LoginButton } from './components/login-button';
 import { Loading } from "./components/loading";
 import { Button } from "./components/button";
 import { isLocal } from './lib/utils.ts';
+import { Homepage } from './views/homepage/homepage.jsx';
 
 function App() {
   const { user, isAuthenticated, isLoading, error, logout } = useAuth0();
-  console.log('app js', process.env.REACT_APP_AUTH0_CALLBACK_URL);
+  console.log('app js', process.env.REACT_APP_XATA_API_KEY);
   const logoutWithRedirect = () =>
       logout({
         logoutParams: {
@@ -42,21 +43,8 @@ function App() {
 
   return (isAuthenticated && user?.email === 'tekarimegraesh@gmail.com' && !isLoading && (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className='underline'>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <button onClick={() => logoutWithRedirect()}>Log out</button>
-      </header>
+      <Homepage />
+      <button onClick={() => logoutWithRedirect()}>Log out</button>
     </div>
   ));
 }

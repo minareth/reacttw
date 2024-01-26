@@ -1,0 +1,16 @@
+{
+  "id": "mig_cloi840umj7tuupulh5g",
+  "parentID": "mig_cloi820sei6tntb7q930",
+  "checksum": "1:8f2c8d438c1b1872f16b4f9852df924905448098206a16032f8a395f6aa1a8f8",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "event2",
+          "type": "string"
+        },
+        "table": "events"
+      }
+    }
+  ]
+}

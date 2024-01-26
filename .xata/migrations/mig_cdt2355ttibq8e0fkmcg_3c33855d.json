@@ -1,0 +1,16 @@
+{
+  "id": "mig_cdt2355ttibq8e0fkmcg",
+  "parentID": "mig_cdt231h47488r62bu550",
+  "checksum": "1:3c33855d323bc25a6438d11ac64b989326f0e14ed6d82e1cf60843ff8a831737",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "to",
+          "type": "int"
+        },
+        "table": "times"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "mig_clnsccamg89bhu3d1mbg",
+  "parentID": "mig_cgutu28uviphpl9om6og",
+  "checksum": "1:c230b8697dc47044c18607fa93d3abde0fa34f512e57e0b2eed5d27ac531ac39",
+  "operations": [
+    {
+      "addTable": {
+        "table": "npc"
+      }
+    }
+  ]
+}

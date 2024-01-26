@@ -8,7 +8,7 @@ import { isLocal } from './lib/utils.ts';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-console.log('index', process.env.REACT_APP_AUTH0_CALLBACK_URL, window.location.href, isLocal());
+// console.log('index', process.env.REACT_APP_AUTH0_CALLBACK_URL, window.location.href, isLocal());
 
 root.render(
   <Auth0Provider

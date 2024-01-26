@@ -1,0 +1,13 @@
+{
+  "id": "mig_cgutu28uviphpl9om6og",
+  "parentID": "mig_cguttdrlec202elp8hpg",
+  "checksum": "1:39522600aed8ce1497f3adf161ed74fb3a585c851aa887c0daf20796979a3ac5",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "parent",
+        "table": "locations"
+      }
+    }
+  ]
+}

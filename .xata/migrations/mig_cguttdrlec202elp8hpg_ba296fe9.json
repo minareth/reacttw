@@ -1,0 +1,17 @@
+{
+  "id": "mig_cguttdrlec202elp8hpg",
+  "parentID": "mig_cgutsdochqnc41s9dai0",
+  "checksum": "1:ba296fe9e14de2b2bef7b8e9c1d2595ef29e8ee669f6c9772ec061ceab4a7c8a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "sortui",
+          "type": "int",
+          "defaultValue": "0"
+        },
+        "table": "locations"
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "mig_cgutk18chqnc41s9d60g",
+  "parentID": "mig_cgutig8uviphpl9om2l0",
+  "checksum": "1:2dd8f3d85ec8c81db54cf9ef63589b2940e9ed5aea29d68730a3b5612a69f0fd",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "danger",
+          "type": "int",
+          "notNull": true,
+          "defaultValue": "0"
+        },
+        "table": "locations"
+      }
+    }
+  ]
+}

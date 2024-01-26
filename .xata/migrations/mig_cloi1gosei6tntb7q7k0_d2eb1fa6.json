@@ -1,0 +1,16 @@
+{
+  "id": "mig_cloi1gosei6tntb7q7k0",
+  "parentID": "mig_cloe9652mb7o3nl6c1ag",
+  "checksum": "1:d2eb1fa6b90108ff2d0548527bea8a0f5fb8259d00222072d782abb394d93b97",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "name",
+          "type": "text"
+        },
+        "table": "npc"
+      }
+    }
+  ]
+}

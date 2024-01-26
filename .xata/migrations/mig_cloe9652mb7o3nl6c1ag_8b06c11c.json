@@ -1,0 +1,13 @@
+{
+  "id": "mig_cloe9652mb7o3nl6c1ag",
+  "parentID": "mig_clnsccamg89bhu3d1mbg",
+  "checksum": "1:8b06c11ca503cf8c36ccc1f2fa93bb2bbc341dbed0101e430f98f61cbe3c8f53",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "time-slots",
+        "oldName": "times"
+      }
+    }
+  ]
+}
