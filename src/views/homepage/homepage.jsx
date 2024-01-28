@@ -1,7 +1,9 @@
 import { getXataClient } from '../../xata.ts'
 import React, { useEffect, useState } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const Homepage = () => {
+  const { user } = useAuth0();
   const [times, setTimes] = useState([]);
 
   useEffect(() => {
@@ -15,7 +17,6 @@ export const Homepage = () => {
   }, []);
 
   return <div className="homepage">
-      {"Homepage"}
-      {JSON.stringify(times)}
+      {`Welcome ${user?.given_name}`}
     </div>;
 }

@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from './components/login-button';
 import { Loading } from "./components/loading";
@@ -7,6 +7,7 @@ import { isLocal } from './lib/utils.ts';
 import { Homepage } from './views/homepage/homepage.jsx';
 import { Route } from "wouter";
 import { Char } from "./views/char/char.jsx";
+import { Nav } from './components/nav/nav.jsx';
 
 function App() {
   const { user, isAuthenticated, isLoading, error, logout } = useAuth0();
@@ -43,11 +44,17 @@ function App() {
   }
 
   return (isAuthenticated && user?.email === 'tekarimegraesh@gmail.com' && !isLoading && (
-    <div className="App">
-      <Route path="/" component={Homepage} />
-      <Route path="/char" component={Char} />
-      <br />
-      <button onClick={() => logoutWithRedirect()}>Log out</button>
+    <div className="app">
+      <div className="top">
+        <Nav />
+      </div>
+      <div className="content">
+        <Route path="/" component={Homepage} />
+        <Route path="/char" component={Char} />
+      </div>
+      <div className="footer">
+        <button onClick={() => logoutWithRedirect()}>Log out</button>
+      </div>
     </div>
   ));
 }

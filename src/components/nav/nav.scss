@@ -1,0 +1,10 @@
+.nav {
+  display: flex;
+  background: #e4e4e4;
+  .link {
+    padding: 0 8px 4px 8px;
+  }
+  .link:not(:last-child) {
+    border-right: solid 1px #fff;
+  }
+}
