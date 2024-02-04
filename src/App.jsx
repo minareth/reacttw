@@ -1,4 +1,4 @@
-import './App.scss';
+// import './App.scss';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from './components/login-button';
 import { Loading } from "./components/loading";
@@ -27,11 +27,15 @@ function App() {
   }
 
   if (isLoading) {
-    return <Loading />;
+    return <div className="min-h-full text-center flex items-center justify-center">
+      <Loading />
+    </div>;
   }
   console.log('User', user, isAuthenticated);
   if(!isAuthenticated && !user?.email && !isLoading) {
-    return <LoginButton />;
+    return <div className="min-h-full text-center flex items-center justify-center">
+      <LoginButton />
+    </div>;
   }
 
   // console.log('User', user, isAuthenticated);
@@ -44,7 +48,7 @@ function App() {
   }
 
   return (isAuthenticated && user?.email === 'tekarimegraesh@gmail.com' && !isLoading && (
-    <div className="app">
+    <div className="min-h-full text-center">
       <div className="top">
         <Nav />
       </div>

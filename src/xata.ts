@@ -38,6 +38,17 @@ const tables = [
       { name: "event4", type: "string" },
     ],
   },
+  {
+    name: "chars",
+    columns: [
+      { name: "name", type: "string" },
+      { name: "stats", type: "json" },
+      { name: "skills", type: "json" },
+      { name: "secondary", type: "json" },
+      { name: "state", type: "json" },
+    ],
+  },
+  { name: "stats_secondary_dictionary", columns: [] },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -55,15 +66,25 @@ export type NpcRecord = Npc & XataRecord;
 export type Events = InferredTypes["events"];
 export type EventsRecord = Events & XataRecord;
 
+export type Chars = InferredTypes["chars"];
+export type CharsRecord = Chars & XataRecord;
+
+export type StatsSecondaryDictionary =
+  InferredTypes["stats_secondary_dictionary"];
+export type StatsSecondaryDictionaryRecord = StatsSecondaryDictionary &
+  XataRecord;
+
 export type DatabaseSchema = {
   "time-slots": TimeSlotsRecord;
   locations: LocationsRecord;
   npc: NpcRecord;
   events: EventsRecord;
+  chars: CharsRecord;
+  stats_secondary_dictionary: StatsSecondaryDictionaryRecord;
 };
 
 const DatabaseClient = buildClient();
-// console.log('app js', process.env.REACT_APP_XATA_API_KEY);
+
 const defaultOptions = {
   databaseURL:
     "https://Ivan-Vovk-s-workspace-f6b1sv.us-east-1.xata.sh/db/adische0",

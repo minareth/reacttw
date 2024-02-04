@@ -1,0 +1,13 @@
+{
+  "id": "mig_cmr88g64j9mkeigp8akg",
+  "parentID": "mig_cmr87va3di7h3jg682d0",
+  "checksum": "1:2006691da1646ca396d68c8654234d56ae3db6e19843d4027439490551e9670b",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "stats_primary_dictionary",
+        "oldName": "stats_dictionary"
+      }
+    }
+  ]
+}

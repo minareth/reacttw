@@ -1,0 +1,16 @@
+{
+  "id": "mig_cmr857e4j9mkeigp8ah0",
+  "parentID": "mig_cmr854a3di7h3jg682a0",
+  "checksum": "1:0aee615d30f373965b1afafaaea57531f52f8a3328db70ad363b6a8b61fb8af9",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "stats",
+          "type": "json"
+        },
+        "table": "chars"
+      }
+    }
+  ]
+}

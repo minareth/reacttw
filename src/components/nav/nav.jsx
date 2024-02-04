@@ -1,13 +1,12 @@
 import { Link } from "wouter";
-import './nav.scss';
 
 export const Nav = () => {
-  return <div className="nav">
+  return <div className="flex justify-center">
     <Link href="/">
-      <a className="link">Homepage</a>
+      <a className="pr-8 pl-8 pb-1 bg-stone-300">Homepage</a>
     </Link>
     <Link href="/char">
-      <a className="link">Character</a>
+      <a className="pr-8 pl-8 pb-1 bg-stone-300">Character</a>
     </Link>
   </div>
 }

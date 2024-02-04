@@ -1,0 +1,16 @@
+{
+  "id": "mig_cmr85am4j9mkeigp8ai0",
+  "parentID": "mig_cmr857e4j9mkeigp8ah0",
+  "checksum": "1:a3816ab72ca63386e8aac32c97f7633ce88eef0c7d5b7cf2f3eb76a3a9a16faa",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "skills",
+          "type": "json"
+        },
+        "table": "chars"
+      }
+    }
+  ]
+}
