@@ -1,4 +1,4 @@
-// import './App.scss';
+import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from './components/login-button';
 import { Loading } from "./components/loading";
@@ -8,27 +8,29 @@ import { Homepage } from './views/homepage/homepage.jsx';
 import { Route } from "wouter";
 import { Char } from "./views/char/char.jsx";
 import { Nav } from './components/nav/nav.jsx';
+import { StoreContext } from './lib/context/context.ts';
+import { useLogoutWithRedirect } from './lib/auth/auth.ts';
 
 function App() {
-  const { user, isAuthenticated, isLoading, error, logout } = useAuth0();
-  console.log('app js', process.env.REACT_APP_XATA_API_KEY);
-  const logoutWithRedirect = () =>
-      logout({
-        logoutParams: {
-          returnTo: isLocal() ? process.env.REACT_APP_AUTH0_CALLBACK_DEV_URL : process.env.REACT_APP_AUTH0_CALLBACK_PROD_URL,
-        }
-      });
+  const { user, isAuthenticated, isLoading, error } = useAuth0();
+  const { doLogout } = useLogoutWithRedirect();
+  const [store, setStore] = useState({ char: null });
 
   if (error) {
     return <div>
       <p>Oops... {error.message}</p>
+      <br />
       <Button label={'user'} triggeredFunction={() => console.log('user', user)} />
+      <br />
+      <Button label={'Log out'} triggeredFunction={doLogout} />
     </div>;
   }
 
   if (isLoading) {
     return <div className="min-h-full text-center flex items-center justify-center">
       <Loading />
+      <br />
+      <Button label={'Log out'} triggeredFunction={doLogout} />
     </div>;
   }
   console.log('User', user, isAuthenticated);
@@ -43,23 +45,25 @@ function App() {
     return <div className={'no-rights'}>
       <div>Sorry this user doesn't have access rights.</div>
       <br/>
-      <Button label={'Log out'} triggeredFunction={logoutWithRedirect} />
+      <Button label={'Log out'} triggeredFunction={doLogout} />
     </div>;
   }
 
   return (isAuthenticated && user?.email === 'tekarimegraesh@gmail.com' && !isLoading && (
-    <div className="min-h-full text-center">
-      <div className="top">
-        <Nav />
+    <StoreContext.Provider value={store}>
+      <div className="min-h-full text-center">
+        <div className="top">
+          <Nav />
+        </div>
+        <div className="h-[calc(100vh_-_100px)] mt-4">
+          <Route path="/" component={Homepage} />
+          <Route path="/char" component={Char} />
+        </div>
+        <div className="footer">
+          <button className="pr-8 pl-8 pb-1 bg-stone-300" onClick={() => doLogout()}>Log out</button>
+        </div>
       </div>
-      <div className="content">
-        <Route path="/" component={Homepage} />
-        <Route path="/char" component={Char} />
-      </div>
-      <div className="footer">
-        <button onClick={() => logoutWithRedirect()}>Log out</button>
-      </div>
-    </div>
+    </StoreContext.Provider>
   ));
 }
 

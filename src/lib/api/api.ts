@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-// GET request for remote image in node.js
-axios.get(`https://jsonplaceholder.typicode.com/users`)
-    .then(res => {
-        console.log('res', res);
-    })  
-    .catch(function (error) {
-        // handle error
-        console.log(error);
-    });
+export const getChars = () => axios.get(`http://localhost:8080/chars`);
+
+export const postChars = (data) => axios.post(`http://localhost:8080/chars`, data)
+.then(res => {
+    console.log('post res', res);
+})  
+.catch(function (error) {
+    // handle error
+    console.log('post chars error', error);
+});

@@ -1,18 +1,22 @@
-import { getXataClient } from '../../xata.ts'
 import { useEffect, useState } from 'react';
 import { ChevronDoubleUpIcon } from "@heroicons/react/24/solid";
+import { getChars, postChars } from "../../lib/api/api.ts";
 
 export const Char = () => {
   const [chars, setChars] = useState([]);
 
   useEffect(() => {
-    async function XataCheck () {
-      let data = await getXataClient().db['chars'].getPaginated();
-      console.log('data', data?.records);
-      if (data?.records?.length) setChars(data?.records);
-    }
-    
-    XataCheck();
+    getChars()
+    .then(res => {
+      setChars(res?.data?.chars?.records);
+      console.log('get res', chars);
+    })  
+    .catch(function (error) {
+        // handle error
+        console.log('get chars error', error);
+    });
+
+    postChars('post chars data');
   }, []);
 
   return <div className="char">
