@@ -4,7 +4,7 @@ import { StoreContext } from '../../lib/context/context.ts';
 
 export const Homepage = () => {
   const { user } = useAuth0();
-  const store = useContext(StoreContext);
+  const { store } = useContext(StoreContext);
 
   useEffect(() => {
     console.log('store', store);
@@ -13,6 +13,6 @@ export const Homepage = () => {
   return <div className="homepage">
       {`Welcome ${user?.given_name}`}
       <br />
-      {store?.chars ? `Your selected char is ${user?.given_name}` : `Please select your char in the Profile menu on top-right`}
+      {store?.char ? `Your selected char is ${store?.char}` : `Please select your char in the Profile menu on top-right`}
     </div>;
 }

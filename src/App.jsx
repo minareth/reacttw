@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from './components/login-button';
 import { Loading } from "./components/loading";
 import { Button } from "./components/button";
-import { isLocal } from './lib/utils.ts';
 import { Homepage } from './views/homepage/homepage.jsx';
-import { Route } from "wouter";
+import { Route, useLocation } from "wouter";
 import { Char } from "./views/char/char.jsx";
 import { Nav } from './components/nav/nav.jsx';
 import { StoreContext } from './lib/context/context.ts';
@@ -15,6 +14,13 @@ function App() {
   const { user, isAuthenticated, isLoading, error } = useAuth0();
   const { doLogout } = useLogoutWithRedirect();
   const [store, setStore] = useState({ char: null });
+  const value = { store, setStore };
+  const [location, setLocation] = useLocation();
+
+  useEffect(() => {
+    console.log('location', location);
+    if (location !== '/') setLocation('/');
+  }, []);
 
   if (error) {
     return <div>
@@ -50,7 +56,7 @@ function App() {
   }
 
   return (isAuthenticated && user?.email === 'tekarimegraesh@gmail.com' && !isLoading && (
-    <StoreContext.Provider value={store}>
+    <StoreContext.Provider value={value}>
       <div className="min-h-full text-center">
         <div className="top">
           <Nav />

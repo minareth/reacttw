@@ -1,6 +1,0 @@
-{
-  "databaseURL": "https://Ivan-Vovk-s-workspace-f6b1sv.us-east-1.xata.sh/db/adische0",
-  "codegen": {
-    "output": "src/xata.ts"
-  }
-}
