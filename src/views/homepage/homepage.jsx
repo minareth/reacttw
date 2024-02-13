@@ -8,11 +8,11 @@ export const Homepage = () => {
 
   useEffect(() => {
     console.log('store', store);
-  }, []);
+  }, [store]);
 
   return <div className="homepage">
       {`Welcome ${user?.given_name}`}
       <br />
-      {store?.char ? `Your selected char is ${store?.char}` : `Please select your char in the Profile menu on top-right`}
+      {store?.char ? `Your selected char is -- ${store?.char?.name}` : `Please select your char in the Profile menu on top-right`}
     </div>;
 }

@@ -13,7 +13,7 @@ export const CharacterList = () => {
 
   const updateStore = (char) => {
     //@ts-ignore
-    setStore({ ...store, char: char.name });
+    setStore({ ...store, char: char });
     console.log(store);
   }
 
