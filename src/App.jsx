@@ -9,6 +9,7 @@ import { Char } from "./views/char/char.jsx";
 import { Nav } from './components/nav/nav.jsx';
 import { StoreContext } from './lib/context/context.ts';
 import { useLogoutWithRedirect } from './lib/auth/auth.ts';
+import { getChars } from './lib/api/api.ts';
 
 function App() {
   const { user, isAuthenticated, isLoading, error } = useAuth0();
@@ -57,7 +58,7 @@ function App() {
 
   return (isAuthenticated && user?.email === 'tekarimegraesh@gmail.com' && !isLoading && (
     <StoreContext.Provider value={value}>
-      <div className="min-h-full text-center">
+      <div className="min-h-full text-center max-w-4xl m-auto relative">
         <div className="top">
           <Nav />
         </div>

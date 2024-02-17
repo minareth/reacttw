@@ -13,6 +13,7 @@ export const Homepage = () => {
   return <div className="homepage">
       {`Welcome ${user?.given_name}`}
       <br />
-      {store?.char ? `Your selected char is -- ${store?.char?.name}` : `Please select your char in the Profile menu on top-right`}
+      <br />
+      {store?.char ? `Your selected character is -- ${store?.char?.name}` : `Please select your character in the Profile menu on top-right`}
     </div>;
 }
