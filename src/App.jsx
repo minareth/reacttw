@@ -3,13 +3,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from './components/login-button';
 import { Loading } from "./components/loading";
 import { Button } from "./components/button";
-import { Homepage } from './views/homepage/homepage.jsx';
+import { Homepage } from './views/homepage.jsx';
 import { Route, useLocation } from "wouter";
-import { Char } from "./views/char/char.jsx";
+import { Char } from "./views/char.jsx";
 import { Nav } from './components/nav/nav.jsx';
 import { StoreContext } from './lib/context/context.ts';
 import { useLogoutWithRedirect } from './lib/auth/auth.ts';
-import { getChars } from './lib/api/api.ts';
+import { World } from './views/world.jsx';
+import { Play } from './views/play.jsx';
 
 function App() {
   const { user, isAuthenticated, isLoading, error } = useAuth0();
@@ -34,10 +35,11 @@ function App() {
   }
 
   if (isLoading) {
-    return <div className="min-h-full text-center flex items-center justify-center">
+    return <div className="min-h-full text-center flex items-center justify-center flex-col">
       <Loading />
-      <br />
-      <Button label={'Log out'} triggeredFunction={doLogout} />
+      <div className='mt-5'>
+        <Button label={'Log out'} triggeredFunction={doLogout} />
+      </div>
     </div>;
   }
   console.log('User', user, isAuthenticated);
@@ -65,6 +67,8 @@ function App() {
         <div className="h-[calc(100vh_-_100px)] mt-4">
           <Route path="/" component={Homepage} />
           <Route path="/char" component={Char} />
+          <Route path="/world" component={World} />
+          <Route path="/play" component={Play} />
         </div>
         <div className="footer">
           <button className="pr-8 pl-8 pb-1 bg-stone-300" onClick={() => doLogout()}>Log out</button>

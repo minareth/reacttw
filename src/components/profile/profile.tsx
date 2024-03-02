@@ -31,7 +31,7 @@ export const Profile = (props) => {
     </>}
     {profileContent === PROFILE_CONTENT_TYPES.CHARS && <>
       <div className="inline-block mb-4">Character list</div>
-      {isLoading ? <Loading /> : <CharacterList />}
+      {isLoading ? <Loading /> : <CharacterList closeProfile={close} />}
       <br />
       <CreateChar setLoading={setIsLoading} />
     </>}

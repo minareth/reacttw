@@ -7,11 +7,13 @@ interface Char {
   id: string;
 }
 
-export const CharacterList = () => {
+export const CharacterList = (props) => {
+  const { closeProfile } = props;
   const { store, setStore } = useContext(StoreContext);
   const [chars, setChars] = useState([]);
 
   const updateStore = (charData) => {
+    closeProfile();
     //@ts-ignore
     setStore({ ...store, char: charData });
     console.log(store);
@@ -22,9 +24,9 @@ export const CharacterList = () => {
     .then(res => {
       console.log('get res', res);
       //@ts-ignore
-      setChars(res?.data?.chars?.records);
+      setChars(res?.data);
       //@ts-ignore
-      console.log('get res', res?.data?.chars?.records);
+      console.log('get res', res?.data);
     })
     .catch(function (error) {
         // handle error
