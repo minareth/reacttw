@@ -3,14 +3,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from './components/login-button';
 import { Loading } from "./components/loading";
 import { Button } from "./components/button";
-import { Homepage } from './views/homepage.jsx';
-import { Route, useLocation } from "wouter";
-import { Char } from "./views/char.jsx";
-import { Nav } from './components/nav/nav.jsx';
+import { useLocation } from "wouter";
 import { StoreContext } from './lib/context/context.ts';
 import { useLogoutWithRedirect } from './lib/auth/auth.ts';
-import { World } from './views/world.jsx';
-import { Play } from './views/play.jsx';
+import { AppWrapper } from './features/app-wrapper/app-wrapper.jsx';
 
 function App() {
   const { user, isAuthenticated, isLoading, error } = useAuth0();
@@ -60,20 +56,7 @@ function App() {
 
   return (isAuthenticated && user?.email === 'tekarimegraesh@gmail.com' && !isLoading && (
     <StoreContext.Provider value={value}>
-      <div className="min-h-full text-center max-w-4xl m-auto relative">
-        <div className="top">
-          <Nav />
-        </div>
-        <div className="h-[calc(100vh_-_100px)] mt-4">
-          <Route path="/" component={Homepage} />
-          <Route path="/char" component={Char} />
-          <Route path="/world" component={World} />
-          <Route path="/play" component={Play} />
-        </div>
-        <div className="footer">
-          <button className="pr-8 pl-8 pb-1 bg-stone-300" onClick={() => doLogout()}>Log out</button>
-        </div>
-      </div>
+      <AppWrapper />
     </StoreContext.Provider>
   ));
 }

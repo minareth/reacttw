@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { PlayBlock } from '../components/play-components/play-block.tsx';
+import { StoreContext } from '../lib/context/context.ts';
+import { CharPlay } from '../components/play-components/char-play.jsx';
 
 const PLAY_STATE = {
   MORNING_ACTIONS: {
@@ -173,10 +175,17 @@ const PLAY_STATE = {
 }
 
 export const Play = () => {
-  // const { store, setStore } = useContext(StoreContext);
+  const { store } = useContext(StoreContext);
   const [playState, setPlayState] = useState(PLAY_STATE);
 
   useEffect(() => console.log('effect playChanges', playState), [playState]);
+
+  if (!store?.char) return <div>{"Please select your character"}</div>;
+
+  const secondary = JSON.parse(store?.char?.secondary);
+  console.log('secondary', secondary);
+
+  console.log('store', store);
 
   const updatePlayState = (objectKey, objectValue) => {
     setPlayState({...playState, [objectKey]: objectValue});
@@ -200,15 +209,18 @@ export const Play = () => {
   //   });
   // };
 
-  return <div>
-    <div>Here should be game loop</div>
-    <br />
-    <div className='flex flex-wrap'>
-      {Object.keys(PLAY_STATE).map((itemKey) => {
-        const item = PLAY_STATE[itemKey];
+  return <div className='mt-8'>
+      <div>{'Day ' + secondary?.day}</div>
+      <div className='flex flex-wrap mt-8'>
+        {Object.keys(PLAY_STATE).map((itemKey) => {
+          const item = PLAY_STATE[itemKey];
 
-        return <PlayBlock key={itemKey} objectKey={item.objectKey} updatePlay={updatePlayState} state={playState} />;
-      })}
-    </div>
+          return <PlayBlock key={itemKey} objectKey={item.objectKey} updatePlay={updatePlayState} state={playState} />;
+        })}
+      </div>
+      <hr />
+      <div>
+        <CharPlay />
+      </div>
   </div>
 }
