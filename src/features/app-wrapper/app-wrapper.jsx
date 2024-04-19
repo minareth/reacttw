@@ -1,6 +1,4 @@
 import { useContext } from 'react';
-import { Homepage } from '../../views/homepage';
-import { Char } from '../../views/char';
 import { World } from '../../views/world';
 import { Play } from '../../views/play';
 import { Nav } from '../../components/nav/nav';
@@ -25,8 +23,6 @@ export const AppWrapper = () => {
       <Nav />
     </div>
     <div className="h-[calc(100vh_-_100px)] mt-4">
-      <Route path="/homepage" component={Homepage} />
-      <Route path="/char" component={Char} />
       <Route path="/world" component={World} />
       <Route path="/" component={Play} />
     </div>

@@ -48,3 +48,13 @@ export const deleteChar = (id) => axios.post(`http://localhost:8080/chars/delete
 });
 
 export const upgradeChar = (id, type, name) => axios.post(`http://localhost:8080/chars/upgrade?id=${id}&type=${type}&name=${name}`);
+
+export const play = (id, char) => axios.post(`http://localhost:8080/play?id=${id}&char=${char}`)
+.then(res => {
+    console.log('play res', res);
+    return res;
+})  
+.catch(function (error) {
+    // handle error
+    console.log('play error', error);
+});

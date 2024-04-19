@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from 'react';
 import { PlayBlock } from '../components/play-components/play-block.tsx';
 import { StoreContext } from '../lib/context/context.ts';
 import { CharPlay } from '../components/play-components/char-play.jsx';
+import { SuccessButton } from '../components/success-button.jsx';
+import { play } from '../lib/api/api.ts';
 
 const PLAY_STATE = {
   MORNING_ACTIONS: {
@@ -191,6 +193,11 @@ export const Play = () => {
     setPlayState({...playState, [objectKey]: objectValue});
   }
 
+  const playIteration = () => {
+    console.log('play iteration launched');
+    play(store.char?.id, JSON.stringify(store?.char)).then((res) => console.log('res', res));
+  }
+
   // const updateStorePlay = (charData) => {
   //   //@ts-ignore
   //   setStore({ ...store, char: charData });
@@ -212,11 +219,16 @@ export const Play = () => {
   return <div className='mt-8'>
       <div>{'Day ' + secondary?.day}</div>
       <div className='flex flex-wrap mt-8'>
-        {Object.keys(PLAY_STATE).map((itemKey) => {
-          const item = PLAY_STATE[itemKey];
+        <div className='max-w-[90%]'>
+          {Object.keys(PLAY_STATE).map((itemKey) => {
+            const item = PLAY_STATE[itemKey];
 
-          return <PlayBlock key={itemKey} objectKey={item.objectKey} updatePlay={updatePlayState} state={playState} />;
-        })}
+            return <PlayBlock key={itemKey} objectKey={item.objectKey} updatePlay={updatePlayState} state={playState} />;
+          })}
+        </div>
+        <div>
+          <SuccessButton label={'Go'} triggeredFunction={() => playIteration()} />
+        </div>
       </div>
       <hr />
       <div>
