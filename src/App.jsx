@@ -13,7 +13,7 @@ import { World } from './views/world.jsx';
 import { Play } from './views/play.jsx';
 
 function App() {
-  const { user, isAuthenticated, isLoading, error } = useAuth0();
+  const { user, isAuthenticated, isLoading, error } = useAuth0(); 
   const { doLogout } = useLogoutWithRedirect();
   const [store, setStore] = useState({ char: null });
   const value = { store, setStore };
