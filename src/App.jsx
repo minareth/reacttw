@@ -11,7 +11,7 @@ import { StoreContext } from './lib/context/context.ts';
 import { useLogoutWithRedirect } from './lib/auth/auth.ts';
 import { World } from './views/world.jsx';
 import { Play } from './views/play.jsx';
-
+ 
 function App() {
   const { user, isAuthenticated, isLoading, error } = useAuth0(); 
   const { doLogout } = useLogoutWithRedirect();
