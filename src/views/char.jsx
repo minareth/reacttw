@@ -4,7 +4,7 @@ import { Stats } from '../components/stats/stats.tsx';
 import { Skills } from '../components/stats/skills.tsx';
 import { Secondary } from '../components/stats/secondary.tsx';
 import { CharacterOperations } from '../components/stats/character-operations.tsx';
-import { upgradeChar, getSingleChar } from '../lib/api/api.ts';
+import { upgradeChar, downgradeChar, getSingleChar } from '../lib/api/api.ts';
 import { Inventory } from '../components/stats/inventory.tsx';
 import { Equipment } from '../components/stats/equipment.tsx';
 import { Reputation } from '../components/stats/reputation.tsx';
@@ -43,6 +43,19 @@ export const Char = () => {
     });
   };
 
+  const doDowngrade = (id, type, name) => {
+    console.log('stuff'); 
+    downgradeChar(id, type, name).then(() => {
+      getSingleChar(id).then(res => {
+        console.log('getSingleChar', res?.data);
+        if (res?.data) {
+          updateStore(res?.data)
+          setActiveStats(activeStats);
+        };
+      });
+    });
+  };
+
   return <div className="char">
     <div onClick={() => setActiveStats(STATS_TAB_TYPES.OPERATIONS)} className='cursor-pointer'>{'<<  ' + store?.char?.name + '  >>'}</div>
     <br />
@@ -62,7 +75,7 @@ export const Char = () => {
     {store?.char && activeStats === STATS_TAB_TYPES.SKILLS && <Skills char={store?.char} upgrade={doUpgrade} />}
     {store?.char && activeStats === STATS_TAB_TYPES.INVENTORY && <Inventory char={store?.char} upgrade={doUpgrade} />}
     {store?.char && activeStats === STATS_TAB_TYPES.EQUIPMENT && <Equipment char={store?.char} upgrade={doUpgrade} />}
-    {store?.char && activeStats === STATS_TAB_TYPES.REPUTATION && <Reputation char={store?.char} upgrade={doUpgrade} />}
+    {store?.char && activeStats === STATS_TAB_TYPES.REPUTATION && <Reputation char={store?.char} upgrade={doUpgrade} downgrade={doDowngrade} />}
     {store?.char && activeStats === STATS_TAB_TYPES.PROPERTY && <Property char={store?.char} upgrade={doUpgrade} />}
     {store?.char && activeStats === STATS_TAB_TYPES.OPERATIONS && <CharacterOperations char={store?.char} />}
     {!store?.char && <div>{"Character is not selected"}</div>}

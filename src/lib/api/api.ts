@@ -48,3 +48,5 @@ export const deleteChar = (id) => axios.post(`http://localhost:8080/chars/delete
 });
 
 export const upgradeChar = (id, type, name) => axios.post(`http://localhost:8080/chars/upgrade?id=${id}&type=${type}&name=${name}`);
+
+export const downgradeChar = (id, type, name) => axios.post(`http://localhost:8080/chars/downgrade?id=${id}&type=${type}&name=${name}`);

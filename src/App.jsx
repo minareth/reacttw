@@ -9,7 +9,6 @@ import { Char } from "./views/char.jsx";
 import { Nav } from './components/nav/nav.jsx';
 import { StoreContext } from './lib/context/context.ts';
 import { useLogoutWithRedirect } from './lib/auth/auth.ts';
-import { World } from './views/world.jsx';
 import { Play } from './views/play.jsx';
  
 function App() {
@@ -67,7 +66,6 @@ function App() {
         <div className="h-[calc(100vh_-_100px)] mt-4">
           <Route path="/" component={Homepage} />
           <Route path="/char" component={Char} />
-          <Route path="/world" component={World} />
           <Route path="/play" component={Play} />
         </div>
         <div className="footer">

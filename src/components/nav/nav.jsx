@@ -15,9 +15,6 @@ export const Nav = () => {
     <Link href="/char">
       <a className="pr-8 pl-8 pb-1 bg-stone-300">Character</a>
     </Link>
-    <Link href="/world">
-      <a className="pr-8 pl-8 pb-1 bg-stone-300">World</a>
-    </Link>
     <Link href="/play">
       <a className="pr-8 pl-8 pb-1 bg-stone-300">Play</a>
     </Link>
