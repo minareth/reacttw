@@ -50,3 +50,13 @@ export const deleteChar = (id) => axios.post(`http://localhost:8080/chars/delete
 export const upgradeChar = (id, type, name) => axios.post(`http://localhost:8080/chars/upgrade?id=${id}&type=${type}&name=${name}`);
 
 export const downgradeChar = (id, type, name) => axios.post(`http://localhost:8080/chars/downgrade?id=${id}&type=${type}&name=${name}`);
+
+export const generateLoot = (type, tier) => axios.get(`http://localhost:8080/generate?type=${type}&tier=${tier}`)
+.then(res => {
+    console.log('generateLoot res', res);
+    return res;
+})  
+.catch(function (error) {
+    // handle error
+    console.log('generateLoot error', error);
+});

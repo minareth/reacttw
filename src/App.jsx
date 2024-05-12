@@ -10,6 +10,7 @@ import { Nav } from './components/nav/nav.jsx';
 import { StoreContext } from './lib/context/context.ts';
 import { useLogoutWithRedirect } from './lib/auth/auth.ts';
 import { Play } from './views/play.jsx';
+import { Generate } from './views/generate.jsx';
  
 function App() {
   const { user, isAuthenticated, isLoading, error } = useAuth0(); 
@@ -67,9 +68,10 @@ function App() {
           <Route path="/" component={Homepage} />
           <Route path="/char" component={Char} />
           <Route path="/play" component={Play} />
+          <Route path="/generate" component={Generate} />
         </div>
         <div className="footer">
-          <button className="pr-8 pl-8 pb-1 bg-stone-300" onClick={() => doLogout()}>Log out</button>
+          <button className="pr-8 pl-8 pb-1" onClick={() => doLogout()}>Log out</button>
         </div>
       </div>
     </StoreContext.Provider>

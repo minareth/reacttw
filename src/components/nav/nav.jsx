@@ -10,13 +10,13 @@ export const Nav = () => {
 
   return <div className="flex justify-center mt-4">
     <Link href="/">
-      <a className="pr-8 pl-8 pb-1 bg-stone-300">Homepage</a>
+      <a className="pr-8 pl-8 pb-1">Homepage</a>
     </Link>
     <Link href="/char">
-      <a className="pr-8 pl-8 pb-1 bg-stone-300">Character</a>
+      <a className="pr-8 pl-8 pb-1">Character</a>
     </Link>
-    <Link href="/play">
-      <a className="pr-8 pl-8 pb-1 bg-stone-300">Play</a>
+    <Link href="/generate">
+      <a className="pr-8 pl-8 pb-1">Generate</a>
     </Link>
     <div className="absolute right-4">
       <UserIcon className="block h-6 cursor-pointer" onClick={() => setIsProfileOpen(!isProfileOpen)} />
