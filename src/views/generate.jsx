@@ -3,11 +3,11 @@ import { generateLoot } from "../lib/api/api.ts";
 
 export const Generate = () => {
   const [type, setType] = useState('Coins');
-  const [tier, setTier] = useState('1');
+  const [looTScore, setLootScore] = useState('1');
   const [generatedResponse, setGeneratedResponse] = useState('');
 
-  const executeGenerateLoot = (type, tier) => {
-    generateLoot(type, tier).then(res => setGeneratedResponse(JSON.stringify(res.data)));
+  const executeGenerateLoot = (type, score) => {
+    generateLoot(type, score).then(res => setGeneratedResponse(JSON.stringify(res.data)));
   }
 
   return <>
@@ -24,16 +24,12 @@ export const Generate = () => {
           </select>
         </div>
         <div className="form-field w-1/3">
-          <label className="form-label">Item's tier</label>
-          <select className="select select-secondary" onChange={(e) => setTier(e.target.value)}>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
+          <label className="form-label">Loot Score</label>
+          <input class="input input-secondary" placeholder="" type="number" onChange={(e) => setLootScore(e.target.value)} />
         </div>
         <div className="form-field pt-5">
           <div className="form-control justify-between">
-            <button type="button" className="btn btn-outline-success w-full" onClick={() => executeGenerateLoot(type, tier)}>Generate</button>
+            <button type="button" className="btn btn-outline-success w-full" onClick={() => executeGenerateLoot(type, looTScore)}>Generate</button>
           </div>
         </div>
       </div>

@@ -51,7 +51,7 @@ export const upgradeChar = (id, type, name) => axios.post(`http://localhost:8080
 
 export const downgradeChar = (id, type, name) => axios.post(`http://localhost:8080/chars/downgrade?id=${id}&type=${type}&name=${name}`);
 
-export const generateLoot = (type, tier) => axios.get(`http://localhost:8080/generate?type=${type}&tier=${tier}`)
+export const generateLoot = (type, score) => axios.get(`http://localhost:8080/generate?type=${type}&score=${score}`)
 .then(res => {
     console.log('generateLoot res', res);
     return res;
